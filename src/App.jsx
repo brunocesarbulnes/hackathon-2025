@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Footer } from "./components/footer/footer.component";
+import { Header } from "./components/header/header.component";
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -7,5 +9,13 @@ const Title = styled.h1`
 `;
 
 export function App() {
-  return <Title>Tutupom?</Title>
+  return (
+    <>
+      <Header />
+      <main>
+        <Title>Tutupom?</Title>
+      </main>
+      <Footer />
+    </>
+  )
 }
