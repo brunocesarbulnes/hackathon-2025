@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DataTable, Footer, Header, Jumbotron, MoneyCard, NewDataModal } from "./components";
+import { DataChart, DataTable, Footer, Header, Jumbotron, MoneyCard, NewDataModal } from "./components";
 
 export function App() {
   const [data, setData] = useState([]);
@@ -21,6 +21,8 @@ export function App() {
           <MoneyCard title={outgoing} subtitle="Outgoing" />
           <MoneyCard title={total} subtitle="Total" />
         </Jumbotron>
+
+        <DataChart />
 
         <DataTable data={data} />
 

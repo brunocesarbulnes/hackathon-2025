@@ -1,3 +1,4 @@
+export { DataChart } from "./data-chart/data-chart.component";
 export { DataTable } from "./data-table/data-table.component";
 export { Footer } from "./footer/footer.component";
 export { Header } from "./header/header.component";
