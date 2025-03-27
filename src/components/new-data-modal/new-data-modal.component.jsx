@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { NewDataForm } from "../new-data-form/new-data-form.component";
 
-export function NewDataModal() {
+export function NewDataModal({ onFormSubmit }) {
   const modalRef = useRef(null);
 
   const [modalApi, setModalApi] = useState(null);
@@ -23,6 +23,11 @@ export function NewDataModal() {
     modalApi.close();
   }
 
+  function handleFormDataSubmit(data) {
+    onFormSubmit(data);
+    closeModal();
+  }
+
   return (
     <div ref={modalRef} id="modal-963464765" role="dialog" data-dds="modal" className="dds__modal" aria-labelledby="modal-headline-627930623">
       <div className="dds__modal__content">
@@ -31,7 +36,7 @@ export function NewDataModal() {
         </div>
 
         <div id="modal-body-627930623" className="dds__modal__body">
-          <NewDataForm />
+          <NewDataForm onFormSubmit={handleFormDataSubmit} />
         </div>
 
         <div className="dds__modal__footer">

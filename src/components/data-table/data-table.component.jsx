@@ -1,18 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export function DataTable() {
+export function DataTable({ data = [] }) {
   const tableRef = useRef(null);
 
+  const [tableApi, setTableApi] = useState(null);
+
   useEffect(() => {
-    const data = [];
-
-    const columns = [{ value: "Description" }, { value: "Type" }, { value: "Amount" }, { value: "Date" }];
-
-    window.DDS.Table(tableRef.current, {
-      data,
-      columns,
+    const api = window.DDS.Table(tableRef.current, {
+      data: [],
+      columns: [{ value: "Description" }, { value: "Type" }, { value: "Amount" }, { value: "Date" }],
     });
+
+    if (api) {
+      setTableApi(api);
+    }
   }, []);
+
+  useEffect(() => {
+    if (!tableApi) {
+      return;
+    }
+
+    if (!data) {
+      return;
+    }
+
+    const formattedData = data.map((row) => {
+      const { description, type, amount, date } = row;
+
+      return ({
+        columns: [
+          { value: description },
+          { value: type },
+          { value: amount },
+          { value: date }
+        ]
+      });
+    });
+
+    tableApi.setData(formattedData);
+  }, [data, tableApi]);
 
   return (
     <div className="dds__container">

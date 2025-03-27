@@ -1,11 +1,16 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { DataTable, Footer, Header, Jumbotron, MoneyCard, NewDataModal } from "./components";
 
 export function App() {
-  const [incoming, setIncomming] = useState(0);
-  const [outgoing, setOutgoing] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [data, setData] = useState([]);
+
+  const incoming = data.filter((row) => row.type === "incoming").reduce((acc, row) => acc + parseInt(row.amount), 0);
+  const outgoing = data.filter((row) => row.type === "outgoing").reduce((acc, row) => acc + parseInt(row.amount), 0);
+  const total = incoming - outgoing;
+
+  const addNewData = (newData) => {
+    setData([...data, newData]);
+  };
 
   return (
     <>
@@ -17,9 +22,9 @@ export function App() {
           <MoneyCard title={total} subtitle="Total" />
         </Jumbotron>
 
-        <DataTable />
+        <DataTable data={data} />
 
-        <NewDataModal />
+        <NewDataModal onFormSubmit={addNewData} />
       </main>
       <Footer />
     </>

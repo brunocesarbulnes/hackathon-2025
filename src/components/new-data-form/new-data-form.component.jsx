@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-export function NewDataForm() {
+export function NewDataForm({ onFormSubmit }) {
   const formRef = useRef(null);
   const selectRef = useRef(null);
   const datePickerRef = useRef(null);
@@ -23,7 +23,13 @@ export function NewDataForm() {
   function handleFormSubmit(event) {
     event.preventDefault();
 
-    console.log(formApi.isValid());
+    if (formApi.isValid()) {
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      onFormSubmit(data);
+    }
   }
 
   return (
@@ -40,7 +46,7 @@ export function NewDataForm() {
                   <input
                     type="text"
                     className="dds__input-text"
-                    name="text-input-control-name-791044237"
+                    name="description"
                     id="text-input-control-791044237"
                     required
                     aria-labelledby="text-input-label-791044237 text-input-helper-791044237"
@@ -56,7 +62,7 @@ export function NewDataForm() {
                   Type
                 </label>
                 <div className="dds__select__wrapper">
-                  <select id="select-control-854808353" aria-label="Select label" className="dds__select__field" aria-describedby="select-helper-854808353">
+                  <select id="select-control-854808353" aria-label="Select label" className="dds__select__field" aria-describedby="select-helper-854808353" name="type">
                     <option value="incoming">Incoming</option>
                     <option value="outgoing">Outgoing</option>
                   </select>
@@ -75,7 +81,7 @@ export function NewDataForm() {
                     min="1"
                     step="any"
                     className="dds__input-text"
-                    name="text-input-control-name-182098924"
+                    name="amount"
                     id="text-input-control-182098924"
                     aria-labelledby="text-input-label-182098924 text-input-helper-182098924"
                     required
@@ -86,22 +92,22 @@ export function NewDataForm() {
             </div>
 
             <div className="dds__form__field">
-              <div id="datepicker-640246664" class="dds__date-picker" data-dds="date-picker" ref={datePickerRef}>
-                <label id="date-picker-label-884991250" for="date-picker-control-name-884991250" class="dds__label dds__label--required">
+              <div id="datepicker-640246664" className="dds__date-picker" data-dds="date-picker" ref={datePickerRef}>
+                <label id="date-picker-label-884991250" htmlFor="date-picker-control-name-884991250" className="dds__label dds__label--required">
                   Date
                 </label>
-                <div class="dds__date-picker__wrapper">
+                <div className="dds__date-picker__wrapper">
                   <input
                     type="text"
-                    class="dds__date-picker__input"
-                    required="true"
-                    maxlength="256"
+                    className="dds__date-picker__input"
+                    required
+                    maxLength="256"
                     id="date-picker-control-884991250"
-                    name="date-picker-control-name-884991250"
+                    name="date"
                     aria-labelledby="date-picker-label-884991250"
                     aria-describedby="date-picker-helper-884991250"
                   />
-                  <div id="date-picker-error-884991250" class="dds__date-picker__invalid-feedback">Invalid date</div>
+                  <div id="date-picker-error-884991250" className="dds__date-picker__invalid-feedback">Invalid date</div>
                 </div>
               </div>
             </div>
