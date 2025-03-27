@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { DataTable, Footer, Header, Jumbotron, MoneyCard } from "./components";
+import { DataTable, Footer, Header, Jumbotron, MoneyCard, NewDataModal } from "./components";
 
 export function App() {
   const [incoming, setIncomming] = useState(0);
@@ -18,6 +18,8 @@ export function App() {
         </Jumbotron>
 
         <DataTable />
+
+        <NewDataModal />
       </main>
       <Footer />
     </>

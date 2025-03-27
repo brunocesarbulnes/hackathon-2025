@@ -4,14 +4,9 @@ export function DataTable() {
   const tableRef = useRef(null);
 
   useEffect(() => {
-    const data = [
-      { columns: [{ value: 563937315 }, { value: "UMF" }, { value: "03/27/2025" }, { value: "Success" }] },
-      { columns: [{ value: 507738551 }, { value: "Premier" }, { value: "02/26/2025" }, { value: "Pending" }] },
-      { columns: [{ value: 728157236 }, { value: "Dev Ex" }, { value: "03/25/2025" }, { value: "Error" }] },
-      { columns: [{ value: 565986425 }, { value: "DFS" }, { value: "03/26/2024" }, { value: "Success" }] },
-    ];
+    const data = [];
 
-    const columns = [{ value: "Ticket ID" }, { value: "Team" }, { value: "Date" }, { value: "Status" }];
+    const columns = [{ value: "Description" }, { value: "Type" }, { value: "Amount" }, { value: "Date" }, { value: "" }];
 
     window.DDS.Table(tableRef.current, {
       data,

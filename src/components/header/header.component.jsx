@@ -17,7 +17,7 @@ export function Header() {
           </div>
 
           <div className="dds__col dds__d-flex dds__align-items-center dds__justify-content-end">
-            <button className="dds__button dds__button--primary dds__button--md" type="button">
+            <button className="dds__button dds__button--primary dds__button--md" type="button" id="modal-963464765-trigger">
               <span className="dds__icon dds__icon--plus-add dds__button__icon--start" aria-hidden="true"></span>
               Add new registry
             </button>
