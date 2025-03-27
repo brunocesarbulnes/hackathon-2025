@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { NewDataForm } from "../new-data-form/new-data-form.component";
 
 export function NewDataModal() {
   const modalRef = useRef(null);
@@ -13,8 +14,10 @@ export function NewDataModal() {
       }
     });
 
-    setModalApi(api);
-  }, []);
+    if (api) {
+      setModalApi(api);
+    }
+  }, [modalApi]);
 
   function closeModal() {
     modalApi.close();
@@ -28,19 +31,14 @@ export function NewDataModal() {
         </div>
 
         <div id="modal-body-627930623" className="dds__modal__body">
-          <p>
-            Small, light, and stylish laptops and 2-in-1s designed for ultimate productivity. A new era of collaboration and connectivity to
-            work anywhere. XPS laptops and 2-in-1s are precision crafted with premium materials, featuring stunning displays and the
-            performance you demand to express your creative self and your big ideas.
-            <a href="https://www.dell.com">dell.com</a>
-          </p>
+          <NewDataForm />
         </div>
 
         <div className="dds__modal__footer">
           <button className="dds__button dds__button--secondary dds__button--md" type="button" name="modal-primary-button" onClick={closeModal}>
             Cancel
           </button>
-          <button className="dds__button dds__button--md" type="button" name="modal-secondary-button" onClick={closeModal}>
+          <button className="dds__button dds__button--md" type="submit" name="modal-secondary-button" form="form-733099558">
             Confirm
           </button>
         </div>

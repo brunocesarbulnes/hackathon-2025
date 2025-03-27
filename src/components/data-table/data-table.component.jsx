@@ -6,7 +6,7 @@ export function DataTable() {
   useEffect(() => {
     const data = [];
 
-    const columns = [{ value: "Description" }, { value: "Type" }, { value: "Amount" }, { value: "Date" }, { value: "" }];
+    const columns = [{ value: "Description" }, { value: "Type" }, { value: "Amount" }, { value: "Date" }];
 
     window.DDS.Table(tableRef.current, {
       data,
