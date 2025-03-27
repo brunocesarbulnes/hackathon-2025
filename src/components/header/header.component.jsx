@@ -10,7 +10,6 @@ export function Header() {
                 alt=""
                 width="221"
                 height="55"
-                loading="lazy"
                 className="dds__h-100 dds__mw-100 dds__mh-100"
               />
               <span className="dds__sr-only">Learning Vanilla</span>
