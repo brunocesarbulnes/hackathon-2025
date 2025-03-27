@@ -13,7 +13,7 @@ export function Footer() {
                 <FooterLink
                   key={index}
                   href="#"
-                  className="dds__link--standalone dds__mb-4 dds__mb-lg-0 dds__mr-lg-5"
+                  className={`dds__link--standalone ${index < links.length - 1 ? "dds__mb-4 dds__mb-lg-0 dds__mr-lg-5" : ""}`}
                   dangerouslySetInnerHTML={{ __html: link }}
                 />
               ))}
