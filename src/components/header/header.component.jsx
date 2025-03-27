@@ -16,6 +16,13 @@ export function Header() {
               <span className="dds__sr-only">Learning Vanilla</span>
             </h1>
           </div>
+
+          <div className="dds__col dds__d-flex dds__align-items-center dds__justify-content-end">
+            <button className="dds__button dds__button--primary dds__button--md" type="button">
+              <span className="dds__icon dds__icon--plus-add dds__button__icon--start" aria-hidden="true"></span>
+              Add new registry
+            </button>
+          </div>
         </div>
       </div>
     </header>
